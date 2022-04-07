@@ -1,0 +1,38 @@
+// const pageItemClass = ".item_30l8";
+		// const pageItemUrls = await page.$$eval(pageItemClass, payload);
+		// const data = [];
+		// let i = 0;
+		// for (const url of pageItemUrls) {
+		// 	await page.goto(url, {
+		// 		waitUntil: 'load',
+		// 		timeout: 0
+		// 	});
+
+		// 	try {
+		// 		const championData = await page.evaluate(() => {
+		// 			const title = document.querySelector(".title_1orQ").innerHTML;
+		// 			const subtitle = document.querySelector(".subheadline_rlsJ").innerHTML;
+		// 			const race = document.querySelector(".race_3k58 h6").innerHTML;
+		// 			const quote = document.querySelector(".quote_2507 p").innerHTML;
+		// 			const role = document.querySelector(".typeDescription_ixWu h6").innerHTML;
+		// 			const region = document.querySelector(".factionText_EnRL h6 span").innerHTML;
+		// 			const biography = document.querySelector(".biographyText_3-to p").innerHTML;
+		// 			const featuredItem_video = document.querySelector('iframe[title="YouTube video player"]').getAttribute("src");
+		// 			const featuredItem_title = document.querySelector(".copy_2DWH h1").innerHTML;
+		// 			const featuredItem_description = document.querySelector(".copy_2DWH p").innerHTML;
+		// 			const shortStory_titleStart = Array.from(document.querySelectorAll(".titleStart_22mt")).map(item => item.innerHTML);
+		// 			const shortStory_titleEnd = Array.from(document.querySelectorAll(".titleEnd_2xIL")).map(item => item.innerHTML);
+		// 			const shortStory_titleTop = Array.from(document.querySelectorAll(".topTitle_16N2")).map(item => item.innerHTML);
+		// 			const shortStory_description = Array.from(document.querySelectorAll(".description_2Zbo")).map(item => item.innerHTML);
+
+		// 			return {
+		// 				title, subtitle, race, quote, role, region, biography, featuredItem_description, featuredItem_title, featuredItem_video, shortStory_description, shortStory_titleEnd, shortStory_titleStart, shortStory_titleTop
+		// 			};
+		// 		});
+		// 		i++;
+		// 		data.push(championData);
+		// 		console.log(data);
+		// 		if (i > 10) break;
+		// 	} catch (err) {
+		// 		continue;
+		// 	}
