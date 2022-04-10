@@ -1,0 +1,133 @@
+@import "../assets/colors.scss";
+
+.wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  .link-item-underline {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: $blue-pale;
+  }
+
+  .dropDown {
+    position: relative;
+    margin-right: 4px;
+    width: 100%;
+
+    .dropDown__Btn {
+      background-color: transparent;
+      color: $white;
+      text-transform: uppercase;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      padding: 7.5px 16px;
+
+      svg {
+        position: relative;
+        left: 4px;
+      }
+
+      &:hover {
+        background-color: $grey-hover;
+        border-radius: 10px;
+      }
+    }
+
+    ul {
+      position: absolute;
+      top: 47px;
+      left: 0;
+      background-color: $black-pale;
+      padding: 20px 10px;
+      width: 170px;
+      border-radius: 2px;
+      border-top: 4px solid $blue-pale;
+
+      li {
+        list-style-type: none;
+        margin-bottom: 10px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        a {
+          text-decoration: none;
+          color: $grey-text;
+          padding: 8px 16px;
+          font-size: 13px;
+          font-weight: 500;
+          text-transform: capitalize;
+        }
+      }
+    }
+  }
+}
+
+.link-item {
+  background-color: transparent;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 1px;
+  padding: 5px 14px;
+  margin-right: 4px;
+  outline: none;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  a {
+    text-decoration: none;
+    font-weight: 600;
+    color: $white;
+  }
+
+  &:hover {
+    background-color: $grey-hover;
+    border-radius: 5px;
+
+    a {
+      color: $white;
+    }
+  }
+}
+
+.active {
+  background-color: $grey-hover;
+  border-radius: 5px;
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.playBtn {
+  background: linear-gradient(315deg, $blue-pale, $blue-dark);
+  border-radius: 12px;
+  text-transform: uppercase;
+
+  a {
+    color: $black-dark;
+  }
+
+  &:hover {
+    background: $blue-pale;
+    border-radius: 12px;
+
+    a {
+      color: $black-dark;
+    }
+  }
+}
+
+.icon {
+  padding: 7px 8px;
+}

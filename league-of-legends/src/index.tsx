@@ -4,6 +4,7 @@ import reportWebVitals from "./reportWebVitals";
 import AppRouter from "./routes/AppRouter";
 
 import "./common/ui/assets/index.scss";
+import "./common/utils/i18n";
 
 ReactDOM.render(
   <React.StrictMode>
