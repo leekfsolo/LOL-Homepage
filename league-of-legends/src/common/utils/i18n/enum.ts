@@ -1,9 +1,15 @@
 export enum ScopeKey {
-  LANG = "RlUJt971uBVOaBwMRTam",
+  LANG = "locale",
 }
 
 export enum ScopeValue {
-  VIE = "aHJ0HFmHKy4S3jXGqShP",
-  ENG = "jnlcBmm0I7m8YRWXqaVW",
-  KOR = "Xg7MIRkRMHTqmVqm1pXF",
+  VIE = "vn",
+  ENG = "en",
+  KOR = "kr",
+}
+
+export interface localeItem {
+  locale: string;
+  code: string;
+  isActive: boolean;
 }

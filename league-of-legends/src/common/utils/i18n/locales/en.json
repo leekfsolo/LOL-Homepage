@@ -1,1 +1,18 @@
-{}
+{
+  "desktop.universe": "universe",
+  "shortcut.champions": "champions",
+  "shortcut.regions": "regions",
+  "shortcut.comics": "comics",
+  "shortcut.altUniverse": "alt universe",
+  "shortcut.map": "map",
+  "shortcut.explore": "explore",
+  "shortcut.search": "search",
+  "shortcut.signIn": "sign in",
+  "shortcut.playNow": "play now",
+  "universe.starGuardian": "Star Guardian",
+  "universe.odyssey": "Odyssey",
+  "universe.k/da": "K/DA",
+  "locale.english": "english",
+  "locale.vietnamese": "tiếng việt",
+  "locale.korean": "한국어"
+}

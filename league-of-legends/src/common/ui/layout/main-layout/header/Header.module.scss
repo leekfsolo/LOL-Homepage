@@ -18,8 +18,9 @@
     #desktop_title {
       color: $white;
       font-weight: 700;
-      font-size: 18px;
+      font-size: 17px;
       outline: none;
+      text-transform: capitalize;
 
       &:hover {
         color: $white;

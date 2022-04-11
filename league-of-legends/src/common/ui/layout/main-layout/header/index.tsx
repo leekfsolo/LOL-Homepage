@@ -6,6 +6,7 @@ import {
   NavDropdown,
   Offcanvas,
 } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 import ButtonDropDown from "../../../buttons/ButtonDropDown";
 import ButtonNav from "../../../buttons/ButtonNav";
 import { menuItems } from "../enum";
@@ -13,14 +14,18 @@ import { menuItems } from "../enum";
 import styles from "./Header.module.scss";
 
 const Header = () => {
+  const { t } = useTranslation();
   const contentItems: Array<menuItems> = [
-    { title: "champions" },
-    { title: "regions" },
-    { title: "comics" },
-    { title: "alt universe", items: ["Star Guardian", "Odyssey", "K/DA"] },
-    { title: "map" },
-    { title: "explore" },
-    { title: "search" },
+    { title: "shortcut.champions" },
+    { title: "shortcut.regions" },
+    { title: "shortcut.comics" },
+    {
+      title: "shortcut.altUniverse",
+      items: ["universe.starGuardian", "universe.odyssey", "universe.k/da"],
+    },
+    { title: "shortcut.map" },
+    { title: "shortcut.explore" },
+    { title: "shortcut.search" },
   ];
 
   return (
@@ -73,7 +78,7 @@ const Header = () => {
               </svg>
             </Nav.Link>
             <Nav.Link href="#" id={styles["desktop_title"]}>
-              Universe
+              {t("desktop.universe")}
             </Nav.Link>
           </div>
           <div className={styles.desktop__content}>
@@ -95,8 +100,8 @@ const Header = () => {
           </div>
         </Nav>
         <ButtonNav svg="globeIcon" />
-        <ButtonNav title="Sign In" isActive={true} />
-        <ButtonNav title="Play Now"></ButtonNav>
+        <ButtonNav title="shortcut.signIn" isActive={true} />
+        <ButtonNav title="shortcut.playNow"></ButtonNav>
         <Navbar.Offcanvas
           id="offcanvasNavbar"
           aria-labelledby="offcanvasNavbarLabel"

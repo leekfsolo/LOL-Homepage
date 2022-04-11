@@ -1,1 +1,18 @@
-{}
+{
+  "desktop.universe": "vũ trụ",
+  "shortcut.champions": "tướng",
+  "shortcut.regions": "khu vực",
+  "shortcut.comics": "truyện tranh",
+  "shortcut.altUniverse": "vũ trụ song song",
+  "shortcut.map": "bản đồ",
+  "shortcut.explore": "khám phá",
+  "shortcut.search": "tìm kiếm",
+  "shortcut.signIn": "đăng nhập",
+  "shortcut.playNow": "chơi ngay",
+  "universe.starGuardian": "Vệ binh tinh tú",
+  "universe.odyssey": "phi đội không gian",
+  "universe.k/da": "K/DA",
+  "locale.english": "english",
+  "locale.vietnamese": "tiếng việt",
+  "locale.korean": "한국어"
+}

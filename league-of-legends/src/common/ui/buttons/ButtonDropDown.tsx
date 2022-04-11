@@ -1,4 +1,5 @@
 import React, { FC, ReactNode, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import styles from "./Button.module.scss";
 
@@ -9,19 +10,20 @@ interface Props {
 }
 
 const ButtonDropDown: FC<Props> = (props: Props) => {
+  const { t } = useTranslation();
   const [isShow, setIsShow] = useState<boolean>(false);
 
   const toggleDropDown = () => setIsShow(!isShow);
   const { title, items } = props;
   return (
-    <div className={styles.wrapper}>
-      <div
-        className={styles.dropDown}
-        onMouseEnter={toggleDropDown}
-        onMouseLeave={toggleDropDown}
-      >
+    <div
+      className={styles.wrapper}
+      onMouseEnter={toggleDropDown}
+      onMouseLeave={toggleDropDown}
+    >
+      <div className={styles.dropDown}>
         <div className={styles.dropDown__Btn}>
-          {title}
+          {t(title)}
           <svg
             width="10"
             height="5"
@@ -35,7 +37,7 @@ const ButtonDropDown: FC<Props> = (props: Props) => {
           <ul>
             {items.map((item, index) => (
               <li key={index}>
-                <Link to="/">{item}</Link>
+                <Link to="/">{t(item)}</Link>
               </li>
             ))}
           </ul>

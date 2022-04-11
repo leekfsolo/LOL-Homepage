@@ -1,1 +1,18 @@
-{}
+{
+  "desktop.universe": "유니버스",
+  "shortcut.champions": "챔피언",
+  "shortcut.regions": "지역",
+  "shortcut.comics": "코믹",
+  "shortcut.altUniverse": "또 다른 유니버스",
+  "shortcut.map": "지도",
+  "shortcut.explore": "살펴보기",
+  "shortcut.search": "검색",
+  "shortcut.signIn": "로그인",
+  "shortcut.playNow": "지금 플레이하기",
+  "universe.starGuardian": "별 수호자",
+  "universe.odyssey": "오디세이",
+  "universe.k/da": "K/DA",
+  "locale.english": "english",
+  "locale.vietnamese": "tiếng việt",
+  "locale.korean": "한국어"
+}
