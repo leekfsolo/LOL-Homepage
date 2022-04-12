@@ -1,0 +1,96 @@
+@import "../../common/ui/assets/colors.scss";
+
+.champions {
+  background-color: #0a0a0c;
+  min-height: 75vh;
+  width: 100%;
+
+  .search {
+    box-shadow: 0 16px 16px -16px rgba(0, 0, 0, 0.702);
+    background-color: $black-tertiary;
+    font-family: Beaufort for LOL, Arial, sans-serif;
+    width: 100%;
+    height: 80px;
+    padding: 0 120px;
+    position: relative;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .searchBar {
+      display: flex;
+      align-items: center;
+      width: 300px;
+      height: 100%;
+
+      input {
+        width: 100%;
+        max-width: 300px;
+        position: absolute;
+        z-index: 1000000;
+        margin-left: 45px;
+        background-color: transparent;
+        outline: none;
+        border: none;
+        font-size: 14px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: $text-secondary;
+
+        &::placeholder {
+          color: $text-primary;
+          opacity: 0.2;
+        }
+      }
+    }
+
+    .searchSorting {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 10000;
+      cursor: pointer;
+      height: 100%;
+
+      &:hover {
+        background-image: radial-gradient(
+          ellipse at 50% 12%,
+          #1b2528,
+          #121212 40%
+        );
+      }
+
+      p {
+        padding: 0 20px;
+        margin: 0 90px 0 0;
+        font-size: 14px;
+        font-weight: 600;
+        color: $text-secondary;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+      }
+
+      .searchSortingType {
+        color: $text-primary;
+        letter-spacing: 3px;
+      }
+    }
+  }
+
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("https://res.cloudinary.com/dcsi3yllr/image/upload/v1649672736/Decoration/championsBackground_jol2j6.jpg")
+      no-repeat;
+    background-size: contain;
+    background-position: top;
+    filter: brightness(0.4);
+    opacity: 0.2;
+    z-index: 1;
+  }
+}

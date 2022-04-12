@@ -5,6 +5,7 @@ import styles from "./Button.module.scss";
 import ButtonGlobe from "./ButtonGlobe";
 
 interface Props {
+  url?: string;
   title?: string;
   children?: ReactNode;
   isActive?: boolean;
@@ -14,7 +15,13 @@ interface Props {
 
 const ButtonNav: FC<Props> = (props: Props) => {
   const { t } = useTranslation();
-  const { title, svg = "", isActive = false, hasBorder = false } = props;
+  const {
+    title,
+    url = "/",
+    svg = "",
+    isActive = false,
+    hasBorder = false,
+  } = props;
 
   const [isSvgHover, setIsSvgHover] = useState<boolean>(false);
   const [isItemHover, setIsItemHover] = useState<boolean>(false);
@@ -30,7 +37,7 @@ const ButtonNav: FC<Props> = (props: Props) => {
 
   let renderElement = (
     <div className={className}>
-      <Link to="/">{t(`${title}`)}</Link>
+      <Link to={url}>{t(`${title}`)}</Link>
     </div>
   );
 
@@ -41,7 +48,7 @@ const ButtonNav: FC<Props> = (props: Props) => {
         onMouseEnter={toggleSvgHover}
         onMouseLeave={toggleSvgHover}
       >
-        <Link to="/">{t("shortcut.map")}</Link>
+        <Link to={url}>{t("shortcut.map")}</Link>
         <svg
           width="11"
           height="11"

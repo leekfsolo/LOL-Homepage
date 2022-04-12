@@ -16,7 +16,7 @@ import styles from "./Header.module.scss";
 const Header = () => {
   const { t } = useTranslation();
   const contentItems: Array<menuItems> = [
-    { title: "shortcut.champions" },
+    { title: "shortcut.champions", url: "/champions" },
     { title: "shortcut.regions" },
     { title: "shortcut.comics" },
     {
@@ -29,7 +29,7 @@ const Header = () => {
   ];
 
   return (
-    <Navbar expand="lg" fixed="top" id={styles.navbar}>
+    <Navbar expand="lg" id={styles.navbar}>
       <Container fluid className="h-100">
         <Navbar.Brand href="#" className={styles.navbar__brand}>
           <svg width="85" height="27" viewBox="0 0 587.93 165" fill="#f9f9f9">
@@ -52,8 +52,7 @@ const Header = () => {
             <Nav.Link className={styles.logo}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="30"
-                height="30"
+                width="24"
                 viewBox="0 0 30 32"
                 fill="none"
               >
@@ -92,16 +91,21 @@ const Header = () => {
                   />
                 );
               } else {
-                if (elem.title === "map")
+                if (elem.title === "shortcut.map")
                   return <ButtonNav title="map" svg="linkOut" key={index} />;
-                else return <ButtonNav title={elem.title} key={index} />;
+                else
+                  return (
+                    <ButtonNav title={elem.title} key={index} url={elem.url} />
+                  );
               }
             })}
           </div>
         </Nav>
-        <ButtonNav svg="globeIcon" />
-        <ButtonNav title="shortcut.signIn" isActive={true} />
-        <ButtonNav title="shortcut.playNow"></ButtonNav>
+        <Nav className="d-none d-lg-flex">
+          <ButtonNav svg="globeIcon" />
+          <ButtonNav title="shortcut.signIn" isActive={true} />
+          <ButtonNav title="shortcut.playNow"></ButtonNav>
+        </Nav>
         <Navbar.Offcanvas
           id="offcanvasNavbar"
           aria-labelledby="offcanvasNavbarLabel"

@@ -131,34 +131,38 @@
   right: 2.5px;
 }
 
-.localeList {
-  width: 220px;
-  padding: 15px 20px 15px 24px;
-  max-height: 200px;
-  overflow-y: auto;
+.popover {
+  z-index: 10000;
 
-  p {
-    text-transform: uppercase;
-    font-size: 12px;
-    font-weight: 600;
-    color: $grey-disable;
-    transition: color 0.3s ease-in;
-    cursor: pointer;
+  .localeList {
+    width: 220px;
+    padding: 15px 20px 15px 24px;
+    max-height: 200px;
+    overflow-y: auto;
 
-    &:hover {
-      color: $black-dark;
-    }
+    p {
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 600;
+      color: $grey-disable;
+      transition: color 0.3s ease-in;
+      cursor: pointer;
 
-    &.chosenLocale {
-      fill: $red-active;
-      color: $red-active;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+      &:hover {
+        color: $black-dark;
+      }
 
-    &:last-child {
-      margin: 0;
+      &.chosenLocale {
+        fill: $red-active;
+        color: $red-active;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      &:last-child {
+        margin: 0;
+      }
     }
   }
 }
