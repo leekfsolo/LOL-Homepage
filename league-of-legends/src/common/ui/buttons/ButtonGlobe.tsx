@@ -53,7 +53,7 @@ const ButtonGlobe = () => {
   }, [lang, swapLanguage]);
 
   const popoverLanguange = (
-    <Popover className={styles.popover}>
+    <Popover id={styles.popover}>
       <div className={styles.localeList}>
         {localeList.map((lc, index) => {
           if (lc.isActive)

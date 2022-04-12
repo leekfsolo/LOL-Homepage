@@ -14,5 +14,10 @@
   "universe.k/da": "K/DA",
   "locale.english": "english",
   "locale.vietnamese": "tiếng việt",
-  "locale.korean": "한국어"
+  "locale.korean": "한국어",
+  "filter.findChampion": "Find a champion",
+  "filter.sort": "sorting by",
+  "filter.sortTypeAZ": "A-Z",
+  "filter.sortTypeNewest": "Newest",
+  "filter.sortTypeRegion": "Region"
 }
