@@ -1,6 +1,84 @@
+// BEAUFORT FOR LOL FONT FACE //
+
 @font-face {
   font-family: Beaufort for LOL;
-  src: url(./BeaufortforLOL/BeaufortforLOL-Bold.woff.ttf) format("truetype");
+  src: url(./BeaufortforLOL/beaufortforlol-light.otf) format("opentype");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: Beaufort for LOL;
+  src: url(./BeaufortforLOL/beaufortforlol-lightitalic.otf) format("opentype");
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Beaufort for LOL;
+  src: url(./BeaufortforLOL/beaufortforlol-regular.otf) format("opentype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Beaufort for LOL;
+  src: url(./BeaufortforLOL/beaufortforlol-italic.otf) format("opentype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Beaufort for LOL;
+  src: url(./BeaufortforLOL/beaufortforlol-medium.otf) format("opentype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Beaufort for LOL;
+  src: url(./BeaufortforLOL/beaufortforlol-mediumitalic.otf) format("opentype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Beaufort for LOL;
+  src: url(./BeaufortforLOL/beaufortforlol-bold.otf) format("opentype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Beaufort for LOL;
+  src: url(./BeaufortforLOL/beaufortforlol-bolditalic.otf) format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: Beaufort for LOL;
+  src: url(./BeaufortforLOL/beaufortforlol-heavy.otf) format("opentype");
+  font-weight: 900;
+}
+
+@font-face {
+  font-family: Beaufort for LOL;
+  src: url(./BeaufortforLOL/beaufortforlol-heavyitalic.otf) format("opentype");
+  font-weight: 900;
+  font-style: italic;
+}
+
+// FF MARK W05 FONT FACE //
+
+@font-face {
+  font-family: FF Mark W05;
+  src: url(./ff-mark-w05/FontFont_FF.Mark.Pro.Thin.Italic.otf)
+    format("opentype");
+  font-weight: 100;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: FF Mark W05;
+  src: url(./ff-mark-w05/FontFont_FF.Mark.Pro.otf) format("opentype");
+  font-weight: 400;
 }
 
 @font-face {
@@ -19,8 +97,16 @@
 
 @font-face {
   font-family: FF Mark W05;
-  src: url(./ff-mark-w05/FontFont_FF.Mark.Pro.otf) format("opentype");
-  font-weight: 400;
+  src: url(./ff-mark-w05/FontFont_FF.Mark.Pro.Bold.otf) format("opentype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: FF Mark W05;
+  src: url(./ff-mark-w05/FontFont_FF.Mark.Pro.Bold.Italic.otf)
+    format("opentype");
+  font-weight: 700;
+  font-style: italic;
 }
 
 @font-face {
@@ -34,27 +120,5 @@
   src: url(./ff-mark-w05/FontFont_FF.Mark.Pro.Heavy.Italic.otf)
     format("opentype");
   font-weight: 900;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: FF Mark W05;
-  src: url(./ff-mark-w05/FontFont_FF.Mark.Pro.Thin.Italic.otf)
-    format("opentype");
-  font-weight: 100;
-  font-style: italic;
-}
-
-@font-face {
-  font-family: FF Mark W05;
-  src: url(./ff-mark-w05/FontFont_FF.Mark.Pro.Bold.otf) format("opentype");
-  font-weight: 700;
-}
-
-@font-face {
-  font-family: FF Mark W05;
-  src: url(./ff-mark-w05/FontFont_FF.Mark.Pro.Bold.Italic.otf)
-    format("opentype");
-  font-weight: 700;
   font-style: italic;
 }

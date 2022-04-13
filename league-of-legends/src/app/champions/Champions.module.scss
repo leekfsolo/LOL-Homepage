@@ -1,7 +1,7 @@
 @import "../../common/ui/assets/colors.scss";
 
 .champions {
-  background-color: #0a0a0c;
+  background-color: $black-background;
   min-height: 75vh;
   width: 100%;
 
@@ -163,5 +163,60 @@
     filter: brightness(0.4);
     opacity: 0.2;
     z-index: 1;
+  }
+
+  .sectionHeader {
+    margin-top: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+
+    .sectionHeader__hero {
+      margin: 100px 0 10px 0;
+    }
+
+    .sectionHeader__context {
+      text-transform: uppercase;
+      color: $text-secondary;
+      font-family: Beaufort for LOL, Arial, Helvetica, sans-serif;
+      letter-spacing: 5px;
+      font-size: 24px;
+
+      span:first-child {
+        img {
+          transform: rotate(180deg);
+        }
+      }
+
+      .sectionHeader__title {
+        margin: 0 65px 0 70px;
+      }
+
+      .diamondLeft,
+      .diamondRight {
+        position: relative;
+        background: #373121;
+        font-size: 0;
+        z-index: 100;
+      }
+
+      .diamondLeft:before,
+      .diamondRight:before {
+        height: 5px;
+        width: 5px;
+        position: absolute;
+        top: -8.5px;
+        transform: rotate(45deg);
+        border: 1px solid #373121;
+        content: "\25C7";
+        font-size: 0;
+      }
+
+      .diamondRight:before {
+        right: 280px;
+      }
+    }
   }
 }
