@@ -5,26 +5,27 @@ import ChampionItem from "./ChampionItem";
 import styles from "./Champions.module.scss";
 import { championData } from "../models/enum";
 
-require("dotenv").config();
-
 const ChampionsList = () => {
-  const databaseUrl = process.env.DATABASE_URL || "";
+  const databaseUrl = "http://127.0.0.1:8000/champions/";
   const [data, setData] = useState<Array<championData>>([]);
 
   useEffect(() => {
-    const championsData = axios.get(databaseUrl);
+    const fetchData = async () => {
+      const championsData = await axios.get(databaseUrl);
 
-    console.log(championsData);
+      setData(championsData.data);
+    };
+
+    fetchData();
   }, []);
+
+  console.log(data);
 
   return (
     <ul className={styles.champion__list}>
-      <ChampionItem />
-      <ChampionItem />
-      <ChampionItem />
-      <ChampionItem />
-      <ChampionItem />
-      <ChampionItem />
+      {data.map((champion, index) => (
+        <ChampionItem key={index} champion={champion} />
+      ))}
     </ul>
   );
 };

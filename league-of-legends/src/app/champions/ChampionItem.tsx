@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import { url } from "inspector";
+import React, { FC, ReactNode, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { championData } from "../models/enum";
 
 import styles from "./Champions.module.scss";
 
-const ChampionItem = () => {
+interface Props {
+  children?: ReactNode;
+  champion: championData;
+}
+
+const ChampionItem: FC<Props> = (props: Props) => {
+  const { name, region, image, imagePosition } = props.champion;
   const { t } = useTranslation();
   const [isHover, setIsHover] = useState<boolean>(false);
 
@@ -16,11 +24,17 @@ const ChampionItem = () => {
           isHover ? ` ${styles.active}` : ""
         }`}
       >
-        <div className={styles.champion__image}></div>
+        <div
+          className={styles.champion__image}
+          style={{
+            backgroundImage: `url(${image})`,
+            backgroundPosition: imagePosition,
+          }}
+        ></div>
         <div className={styles.champion__body}>
           <div className={styles.champion__info}>
-            <h5>Aatrox</h5>
-            <p>Runeterra</p>
+            <h5>{name}</h5>
+            <p>{region}</p>
           </div>
           <div className={styles.champion__moreInfo}>
             <span>{t("champion.explore")}</span>
