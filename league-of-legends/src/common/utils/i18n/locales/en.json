@@ -19,5 +19,7 @@
   "filter.sort": "sorting by",
   "filter.sortTypeAZ": "A-Z",
   "filter.sortTypeNewest": "Newest",
-  "filter.sortTypeRegion": "Region"
+  "filter.sortTypeRegion": "Region",
+  "header.champions": "Champions",
+  "champion.explore": "Explore"
 }

@@ -19,5 +19,7 @@
   "filter.sort": "sắp xếp theo",
   "filter.sortTypeAZ": "A-Z",
   "filter.sortTypeNewest": "mới nhất",
-  "filter.sortTypeRegion": "khu vực"
+  "filter.sortTypeRegion": "khu vực",
+  "header.champions": "Tướng",
+  "champion.explore": "Khám Phá"
 }

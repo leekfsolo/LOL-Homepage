@@ -6,6 +6,7 @@ import { sortingType } from "../models/enum";
 import styles from "./Champions.module.scss";
 import ChampionsList from "./ChampionsList";
 import FilterBar from "./FilterBar";
+import SectionHeader from "./SectionHeader";
 
 const ChampionsPage = () => {
   const { t } = useTranslation();
@@ -41,6 +42,7 @@ const ChampionsPage = () => {
           sortingTypeList={sortingTypeList}
         />
         <div className={styles.background}></div>
+        <SectionHeader />
         <ChampionsList />
       </div>
     </MainLayout>
