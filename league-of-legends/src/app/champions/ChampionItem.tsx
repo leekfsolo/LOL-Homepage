@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Card } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 
 import styles from "./Champions.module.scss";
@@ -18,11 +17,7 @@ const ChampionItem = () => {
         }`}
       >
         <div className={styles.champion__image}></div>
-        <div
-          className={`${styles.champion__body}${
-            isHover ? ` ${styles.active}` : ""
-          }`}
-        >
+        <div className={styles.champion__body}>
           <div className={styles.champion__info}>
             <h5>Aatrox</h5>
             <p>Runeterra</p>

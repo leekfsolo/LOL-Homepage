@@ -21,14 +21,16 @@ async function main({ type = "data" }) {
 
 	if (type === "data") {
 		const itemClass = ".copy_xxN7";
+		const imageClass = '.image_3oOd.avatar_3vJT';
+
 		const championsName = await page.$$eval(`${itemClass} h1`, (names) => names.map(name => name.innerHTML));
 		const championsRegion = await page.$$eval(`${itemClass} span`, (regions) => regions.map(region => region.innerHTML));
+		const championsImagePosition = await page.$$eval(imageClass, (images) => images.map(image => image.style.backgroundPosition));
 		const championsImage = await getImagesFromDB();
 
-		await postDataToDB({ championsName, championsImage, championsRegion });
-
+		await postDataToDB({ championsName, championsImage, championsRegion, championsImagePosition });
 	}
 	await browser.close();
 }
 
-main({ type: "image" });
+main({ type: "data" });

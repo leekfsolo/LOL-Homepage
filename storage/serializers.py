@@ -5,4 +5,4 @@ from storage.models import Champion
 class ChampionSerializers(serializers.ModelSerializer):
   class Meta:
     model = Champion
-    fields = ('name', 'region', 'image')
+    fields = ('name', 'region', 'image', 'imagePosition')

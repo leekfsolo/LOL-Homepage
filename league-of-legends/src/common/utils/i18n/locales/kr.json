@@ -17,7 +17,7 @@
   "locale.korean": "한국어",
   "filter.findChampion": "챔피언 찾기",
   "filter.sort": "정렬",
-  "filter.sortTypeAZ": "A-Z",
+  "filter.sortTypeAZ": "이름순",
   "filter.sortTypeNewest": "최신순",
   "filter.sortTypeRegion": "지역별",
   "header.champions": "챔피언",

@@ -19,12 +19,13 @@ module.exports.getImagesFromDB = async () => {
 	return championsImage;
 };
 
-module.exports.postDataToDB = async ({ championsImage, championsName, championsRegion }) => {
+module.exports.postDataToDB = async ({ championsImage, championsName, championsRegion, championsImagePosition }) => {
 	for (let i = 0; i < totalChampions; i++) {
 		await axios.post(databaseUrl, {
 			name: championsName[i],
 			region: championsRegion[i],
-			image: championsImage[i]
+			image: championsImage[i],
+			imagePosition: championsImagePosition[i]
 		});
 	}
 };
