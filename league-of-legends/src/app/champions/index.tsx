@@ -1,18 +1,20 @@
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import MainLayout from "../../common/ui/layout/main-layout";
-import { sortingType } from "../models/enum";
+import { ChampionData, SortingType } from "../models/enum";
 
 import styles from "./Champions.module.scss";
 import ChampionsList from "./ChampionsList";
 import FilterBar from "./FilterBar";
 import SectionHeader from "./SectionHeader";
 
-const ChampionsPage = () => {
-  const { t } = useTranslation();
-  const [isShowSorting, setIsShowSorting] = useState<boolean>(false);
+const databaseUrl = "http://127.0.0.1:8000/champions/";
 
-  const [sortingTypeList, setSortingTypeList] = useState<Array<sortingType>>([
+const ChampionsPage = () => {
+  const [isShowSorting, setIsShowSorting] = useState<boolean>(false);
+  const [data, setData] = useState<Array<ChampionData>>([]);
+  const [filteredValue, setFilteredValue] = useState<string>("");
+  const [sortingTypeList, setSortingTypeList] = useState<Array<SortingType>>([
     { title: "filter.sortTypeAZ", isActive: true },
     { title: "filter.sortTypeNewest", isActive: false },
     { title: "filter.sortTypeRegion", isActive: false },
@@ -31,6 +33,20 @@ const ChampionsPage = () => {
     (sortingType) => sortingType.isActive
   )[0];
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const championsData = await axios.get(databaseUrl);
+      const filteredData = championsData.data.filter(
+        (champion: ChampionData) =>
+          champion.name.toLowerCase().indexOf(filteredValue.toLowerCase()) === 0
+      );
+
+      setData(filteredData);
+    };
+
+    fetchData();
+  }, [filteredValue]);
+
   return (
     <MainLayout>
       <div className={styles.champions}>
@@ -40,10 +56,11 @@ const ChampionsPage = () => {
           swapSortingType={swapSortingType}
           activeSorting={activeSorting}
           sortingTypeList={sortingTypeList}
+          setFilteredValue={setFilteredValue}
         />
         <div className={styles.background}></div>
         <SectionHeader />
-        <ChampionsList />
+        <ChampionsList data={data} />
       </div>
     </MainLayout>
   );

@@ -306,15 +306,41 @@
           margin-bottom: 0;
 
           .arrow {
+            width: 25px;
+            height: 12.5px;
             position: relative;
             margin-left: 8px;
-            top: -1px;
+            overflow: hidden;
+            display: inline-block;
 
             .hoverArrow,
             .restArrow {
               position: absolute;
               top: 0;
               left: 0;
+              opacity: 1;
+              transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+              transition-delay: 0.22s;
+            }
+
+            .hoverArrow {
+              transform: translateX(-20px);
+              transition-delay: 0s;
+              opacity: 0;
+            }
+
+            &.active {
+              .hoverArrow {
+                transform: translateX(0);
+                transition-delay: 0.22s;
+                opacity: 1;
+              }
+
+              .restArrow {
+                transform: translateX(30px);
+                transition-delay: 0s;
+                opacity: 0;
+              }
             }
           }
         }

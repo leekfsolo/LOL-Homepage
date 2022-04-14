@@ -1,27 +1,32 @@
 import { url } from "inspector";
 import React, { FC, ReactNode, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { championData } from "../models/enum";
+import { ChampionData } from "../models/enum";
 
 import styles from "./Champions.module.scss";
 
 interface Props {
   children?: ReactNode;
-  champion: championData;
+  champion: ChampionData;
 }
 
 const ChampionItem: FC<Props> = (props: Props) => {
   const { name, region, image, imagePosition } = props.champion;
   const { t } = useTranslation();
-  const [isHover, setIsHover] = useState<boolean>(false);
+  const [isCardHover, setIsCardHover] = useState<boolean>(false);
+  const [isInfoHover, setIsInfoHover] = useState<boolean>(false);
 
-  const toggleHoverHandler = () => setIsHover(!isHover);
+  const toggleCardHoverHandler = () => setIsCardHover(!isCardHover);
+  const toggleInfoHoverHandler = () => setIsInfoHover(!isInfoHover);
 
   return (
-    <li onMouseEnter={toggleHoverHandler} onMouseLeave={toggleHoverHandler}>
+    <li
+      onMouseEnter={toggleCardHoverHandler}
+      onMouseLeave={toggleCardHoverHandler}
+    >
       <div
         className={`${styles.champion__item}${
-          isHover ? ` ${styles.active}` : ""
+          isCardHover ? ` ${styles.active}` : ""
         }`}
       >
         <div
@@ -36,9 +41,15 @@ const ChampionItem: FC<Props> = (props: Props) => {
             <h5>{name}</h5>
             <p>{region}</p>
           </div>
-          <div className={styles.champion__moreInfo}>
+          <div
+            className={styles.champion__moreInfo}
+            onMouseEnter={toggleInfoHoverHandler}
+            onMouseLeave={toggleInfoHoverHandler}
+          >
             <span>{t("champion.explore")}</span>
-            <span className={styles.arrow}>
+            <span
+              className={`${styles.arrow} ${isInfoHover ? styles.active : ""}`}
+            >
               <span className={styles.hoverArrow}>
                 <svg
                   version="1.0"

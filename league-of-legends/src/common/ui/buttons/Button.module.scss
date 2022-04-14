@@ -48,13 +48,19 @@
       left: 0;
       background-color: $black-pale;
       padding: 16px 10px 20px 10px;
-      width: 170px;
+      width: 180px;
       border-radius: 2px;
       border-top: 4px solid $blue-pale;
 
       li {
         list-style-type: none;
-        margin-bottom: 10px;
+        margin-bottom: 15px;
+        padding: 5px 0;
+
+        &:hover {
+          background-color: $grey-hover;
+          border-radius: 5px;
+        }
 
         &:last-child {
           margin-bottom: 0;

@@ -1,16 +1,17 @@
-import React, { FC } from "react";
+import React, { FC, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { sortingType } from "../models/enum";
+import { SortingType } from "../models/enum";
 
 import styles from "./Champions.module.scss";
 
-interface Props {
+type Props = {
   isShowSorting: boolean;
   setIsShowSorting: (isShowSorting: boolean) => void;
-  activeSorting: sortingType;
+  activeSorting: SortingType;
   swapSortingType: (sortingType: string) => void;
-  sortingTypeList: Array<sortingType>;
-}
+  sortingTypeList: Array<SortingType>;
+  setFilteredValue: (value: string) => void;
+};
 
 const FilterBar: FC<Props> = (props: Props) => {
   const { t } = useTranslation();
@@ -20,7 +21,16 @@ const FilterBar: FC<Props> = (props: Props) => {
     activeSorting,
     swapSortingType,
     sortingTypeList,
+    setFilteredValue,
   } = props;
+
+  const inputRef = useRef<any>();
+
+  const filterChampion = () => {
+    const value = inputRef.current.value;
+
+    setFilteredValue(value);
+  };
 
   return (
     <div className={`${styles.wrapper} d-none d-md-flex`}>
@@ -31,7 +41,12 @@ const FilterBar: FC<Props> = (props: Props) => {
             src="https://res.cloudinary.com/dcsi3yllr/image/upload/v1649672470/Decoration/content_type_icon_champion__3nwJQ_ufjw1c.png"
             alt="champions"
           />
-          <input type="text" placeholder={t("filter.findChampion")} />
+          <input
+            type="text"
+            placeholder={t("filter.findChampion")}
+            ref={inputRef}
+            onInput={filterChampion}
+          />
         </div>
         <div
           className={`${styles.searchSorting}${

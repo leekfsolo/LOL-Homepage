@@ -1,25 +1,16 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { FC, ReactNode } from "react";
+import { ChampionData } from "../models/enum";
 import ChampionItem from "./ChampionItem";
 
 import styles from "./Champions.module.scss";
-import { championData } from "../models/enum";
 
-const ChampionsList = () => {
-  const databaseUrl = "http://127.0.0.1:8000/champions/";
-  const [data, setData] = useState<Array<championData>>([]);
+interface Props {
+  children?: ReactNode;
+  data: Array<ChampionData>;
+}
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const championsData = await axios.get(databaseUrl);
-
-      setData(championsData.data);
-    };
-
-    fetchData();
-  }, []);
-
-  console.log(data);
+const ChampionsList: FC<Props> = (props: Props) => {
+  const { data } = props;
 
   return (
     <ul className={styles.champion__list}>

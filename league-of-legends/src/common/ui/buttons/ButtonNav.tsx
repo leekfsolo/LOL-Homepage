@@ -16,7 +16,7 @@ interface Props {
 const ButtonNav: FC<Props> = (props: Props) => {
   const { t } = useTranslation();
   const {
-    title,
+    title = "",
     url = "/",
     svg = "",
     isActive = false,
@@ -37,7 +37,7 @@ const ButtonNav: FC<Props> = (props: Props) => {
 
   let renderElement = (
     <div className={className}>
-      <Link to={url}>{t(`${title}`)}</Link>
+      <Link to={url}>{t(title)}</Link>
     </div>
   );
 
