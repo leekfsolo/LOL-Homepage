@@ -29,13 +29,16 @@ module.exports.getImagesFromDB = async () => {
 	return data;
 };
 
-module.exports.postDataToDB = async ({ championsImage, championsName, championsRegion, championsImagePosition }) => {
+module.exports.postDataToDB = async (props) => {
+	const { championsImage, championsName, championsRegion, championsImagePosition, championsReleaseDate } = props;
+
 	for (let i = 0; i < totalChampions; i++) {
 		await axios.post(databaseUrl, {
 			name: championsName[i],
 			region: championsRegion[i],
 			image: championsImage[i],
-			imagePosition: championsImagePosition[i]
+			imagePosition: championsImagePosition[i],
+			release_date: championsReleaseDate[i]
 		});
 	}
 };

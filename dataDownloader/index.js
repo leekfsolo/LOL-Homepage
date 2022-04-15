@@ -8,7 +8,7 @@ require('dotenv').config();
 async function main({ type = "data" }) {
 	const browser = await puppeteer.launch({ headless: false });
 	const page = await browser.newPage();
-	await page.goto(process.env.PAGE_URL, {
+	await page.goto(process.env.MAIN_PAGE_URL, {
 		waitUntil: 'load',
 		timeout: 0
 	});
@@ -28,8 +28,22 @@ async function main({ type = "data" }) {
 		const championsImagePosition = await page.$$eval(imageClass, (images) => images.map(image => image.style.backgroundPosition));
 		const championsImage = await getImagesFromDB();
 
-		await postDataToDB({ championsName, championsImage, championsRegion, championsImagePosition });
+		const champions_page = await browser.newPage();
+		await champions_page.goto(process.env.CHAMPIONS_PAGE_URL, {
+			waitUntil: 'load',
+			timeout: 0
+		});
+		const dataClass = ".article-table tbody tr td:nth-child(3)";
+		const championsReleaseDate = await champions_page.$$eval(dataClass, (dates) => dates.map(date => {
+			if (date.firstChild.hasChildNodes()) {
+				return date.firstChild.innerHTML.trim();
+			}
+			else return date.innerHTML.trim();
+		}));
+
+		await postDataToDB({ championsName, championsImage, championsRegion, championsImagePosition, championsReleaseDate });
 	}
+
 	await browser.close();
 }
 

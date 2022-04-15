@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import MainLayout from "../../common/ui/layout/main-layout";
-import { ChampionData, SortingType } from "../models/enum";
+import { ChampionData, SortedOption, SortingType } from "../models/enum";
 
 import styles from "./Champions.module.scss";
 import ChampionsList from "./ChampionsList";
@@ -14,6 +14,7 @@ const ChampionsPage = () => {
   const [isShowSorting, setIsShowSorting] = useState<boolean>(false);
   const [data, setData] = useState<Array<ChampionData>>([]);
   const [filteredValue, setFilteredValue] = useState<string>("");
+  const [sortedOption, setSortedOption] = useState<string>(SortedOption.AZ);
   const [sortingTypeList, setSortingTypeList] = useState<Array<SortingType>>([
     { title: "filter.sortTypeAZ", isActive: true },
     { title: "filter.sortTypeNewest", isActive: false },
@@ -21,12 +22,15 @@ const ChampionsPage = () => {
   ]);
 
   const swapSortingType = (sortingType: string) => {
+    const prefixTitleLength = "filter.sortType".length;
+    const sortOption = sortingType.slice(prefixTitleLength);
     const list = sortingTypeList.map((st) => {
       st.isActive = st.title === sortingType;
       return st;
     });
 
     setSortingTypeList(list);
+    setSortedOption(sortOption);
   };
 
   const activeSorting = sortingTypeList.filter(
@@ -36,16 +40,31 @@ const ChampionsPage = () => {
   useEffect(() => {
     const fetchData = async () => {
       const championsData = await axios.get(databaseUrl);
-      const filteredData = championsData.data.filter(
+
+      const sortedDataByOption = championsData.data.sort(
+        (item1: ChampionData, item2: ChampionData) => {
+          if (sortedOption === "AZ") {
+            return item1.name.localeCompare(item2.name);
+          } else if (sortedOption === "Region") {
+            return item1.region.localeCompare(item2.region);
+          } else {
+            const date1 = new Date(item1.release_date);
+            const date2 = new Date(item2.release_date);
+            return date2.getTime() - date1.getTime();
+          }
+        }
+      );
+
+      const filteredDataByValue = sortedDataByOption.filter(
         (champion: ChampionData) =>
           champion.name.toLowerCase().indexOf(filteredValue.toLowerCase()) === 0
       );
 
-      setData(filteredData);
+      setData(filteredDataByValue);
     };
 
     fetchData();
-  }, [filteredValue]);
+  }, [filteredValue, sortedOption]);
 
   return (
     <MainLayout>
@@ -60,7 +79,7 @@ const ChampionsPage = () => {
         />
         <div className={styles.background}></div>
         <SectionHeader />
-        <ChampionsList data={data} />
+        <ChampionsList data={data} sortedOption={sortedOption} />
       </div>
     </MainLayout>
   );

@@ -21,5 +21,6 @@
   "filter.sortTypeNewest": "mới nhất",
   "filter.sortTypeRegion": "khu vực",
   "header.champions": "Tướng",
-  "champion.explore": "Khám Phá"
+  "champion.explore": "Khám Phá",
+  "region.subHeader.championsFound": "Tướng tìm thấy"
 }

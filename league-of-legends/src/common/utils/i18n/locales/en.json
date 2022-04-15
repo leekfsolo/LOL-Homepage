@@ -21,5 +21,6 @@
   "filter.sortTypeNewest": "Newest",
   "filter.sortTypeRegion": "Region",
   "header.champions": "Champions",
-  "champion.explore": "Explore"
+  "champion.explore": "Explore",
+  "region.subHeader.championsFound": "Champions Found"
 }
