@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import { ChampionData, RegionData } from "../models/enum";
+import { ChampionData, RegionData } from "../model";
 import ChampionItem from "./ChampionItem";
 
 import styles from "./Champions.module.scss";

@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import MainLayout from "../../common/ui/layout/main-layout";
-import { ChampionData, SortedOption, SortingType } from "../models/enum";
+import { SortedOption } from "../../context/enum";
+import { ChampionData, SortingType } from "../model";
 
 import styles from "./Champions.module.scss";
 import ChampionsList from "./ChampionsList";

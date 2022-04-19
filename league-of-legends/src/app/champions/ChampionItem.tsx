@@ -1,7 +1,6 @@
-import { url } from "inspector";
 import React, { FC, ReactNode, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { ChampionData } from "../models/enum";
+import { ChampionData } from "../model";
 
 import styles from "./Champions.module.scss";
 

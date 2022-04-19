@@ -10,7 +10,7 @@ const ButtonMenu = () => {
 
   return (
     <div className={`${styles["link-item"]} ${styles.menubar__extend}`}>
-      <svg viewBox="0 0 48 48" width={48} onClick={showModal}>
+      <svg viewBox="0 0 48 48" style={{ width: "48px" }} onClick={showModal}>
         <path
           d="M0 18A18 18 0 0118 0h12a18 18 0 0118 18v12a18 18 0 01-18 18H18A18 18 0 010 30z"
           fill="gray"
@@ -21,7 +21,7 @@ const ButtonMenu = () => {
           fill="#fcfcfc"
         ></path>
       </svg>
-      {isShow && <ModalMenu hideModal={hideModal} />}
+      <ModalMenu hideModal={hideModal} styleName={isShow ? "active" : ""} />
     </div>
   );
 };

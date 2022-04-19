@@ -5,10 +5,13 @@ import AppRouter from "./routes/AppRouter";
 
 import "./common/ui/assets/index.scss";
 import "./common/utils/i18n";
+import { MenuContextProvider } from "./context/menu-context/context";
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppRouter />
+    <MenuContextProvider>
+      <AppRouter />
+    </MenuContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

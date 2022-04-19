@@ -1,28 +1,20 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+import MenuContext from "../../../../../context/menu-context/context";
 import ButtonDropDown from "../../../buttons/ButtonDropDown";
+import ButtonGlobe from "../../../buttons/ButtonGlobe";
 import ButtonNav from "../../../buttons/ButtonNav";
-import { menuItems } from "../enum";
+import { menuItems } from "../model";
 
 import styles from "./Header.module.scss";
 
 const Header = () => {
   const { t } = useTranslation();
   const navbarRef = useRef<any>();
+  const menuCtx = useContext(MenuContext);
   const [currentWidth, setCurrentWidth] = useState<number>(window.innerWidth);
-  const [baseItems, setBaseItems] = useState<Array<menuItems>>([
-    { title: "shortcut.champions", url: "/champions" },
-    { title: "shortcut.regions" },
-    {
-      title: "shortcut.altUniverse",
-      items: ["universe.starGuardian", "universe.odyssey", "universe.k/da"],
-    },
-    { title: "shortcut.comics" },
-    { title: "shortcut.map" },
-    { title: "shortcut.explore" },
-    { title: "shortcut.search" },
-  ]);
+  const [baseItems, setBaseItems] = useState<Array<menuItems>>(menuCtx.items);
   const [moreItems, setMoreItems] = useState<Array<menuItems>>([]);
 
   useEffect(() => {
@@ -121,7 +113,6 @@ const Header = () => {
             <path d="M.707 1.707l2.586 2.586a1 1 0 001.414 0l2.586-2.586C7.923 1.077 7.477 0 6.586 0H1.414C.524 0 .077 1.077.707 1.707z"></path>
           </svg>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="offcanvasNavbar" />
         <Nav
           className={`${styles.navItems} me-auto d-none d-lg-flex h-100`}
           ref={navbarRef}
@@ -192,12 +183,14 @@ const Header = () => {
           </div>
         </Nav>
         <Nav className="d-flex align-items-center flex-row">
-          <ButtonNav svg="globeIcon" />
+          <ButtonGlobe />
           <div className="d-none d-lg-flex">
             <ButtonNav title="shortcut.signIn" isActive={true} />
             <ButtonNav title="shortcut.playNow" />
           </div>
-          <ButtonNav svg="menubar" />
+          <div className="d-lg-none d-flex">
+            <ButtonNav svg="menubar" />
+          </div>
         </Nav>
       </Container>
     </Navbar>

@@ -1,6 +1,6 @@
 import React, { FC, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import { SortingType } from "../models/enum";
+import { SortingType } from "../model";
 
 import styles from "./Champions.module.scss";
 

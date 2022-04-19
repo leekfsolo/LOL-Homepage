@@ -1,4 +1,4 @@
-.modal__menu {
+.menu {
   width: 50vw;
   min-width: 500px;
   height: 100vh;
@@ -7,4 +7,25 @@
   top: 0;
   right: 0;
   z-index: 100000;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+
+  &.active {
+    transform: translateX(0%);
+  }
+
+  .menu__header {
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+  }
+
+  .menu__content {
+    margin-bottom: 25px;
+  }
 }

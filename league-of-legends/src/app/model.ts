@@ -15,9 +15,3 @@ export interface RegionData {
   name: string;
   total: number;
 }
-
-export enum SortedOption {
-  AZ = "AZ",
-  REGION = "Region",
-  NEWEST = "Newest",
-}
