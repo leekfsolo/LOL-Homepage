@@ -1,11 +1,5 @@
-import React from "react";
-import {
-  Container,
-  Nav,
-  Navbar,
-  NavDropdown,
-  Offcanvas,
-} from "react-bootstrap";
+import React, { useEffect, useRef, useState } from "react";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import ButtonDropDown from "../../../buttons/ButtonDropDown";
 import ButtonNav from "../../../buttons/ButtonNav";
@@ -15,18 +9,99 @@ import styles from "./Header.module.scss";
 
 const Header = () => {
   const { t } = useTranslation();
-  const contentItems: Array<menuItems> = [
+  const navbarRef = useRef<any>();
+  const [currentWidth, setCurrentWidth] = useState<number>(window.innerWidth);
+  const [baseItems, setBaseItems] = useState<Array<menuItems>>([
     { title: "shortcut.champions", url: "/champions" },
     { title: "shortcut.regions" },
-    { title: "shortcut.comics" },
     {
       title: "shortcut.altUniverse",
       items: ["universe.starGuardian", "universe.odyssey", "universe.k/da"],
     },
+    { title: "shortcut.comics" },
     { title: "shortcut.map" },
     { title: "shortcut.explore" },
     { title: "shortcut.search" },
-  ];
+  ]);
+  const [moreItems, setMoreItems] = useState<Array<menuItems>>([]);
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      const isWidthReduce = window.innerWidth < currentWidth;
+      setCurrentWidth(window.innerWidth);
+      const offsetRight = parseInt(
+        getComputedStyle(navbarRef.current).marginRight
+      );
+
+      if (!isNaN(offsetRight)) {
+        if (isWidthReduce) {
+          if (offsetRight < 5) {
+            if (moreItems.length === 0) {
+              const reduceItem = baseItems[baseItems.length - 1];
+              setMoreItems((prevItems) => [...prevItems, reduceItem]);
+              setBaseItems((prevItems) => {
+                const newBaseItems = prevItems
+                  .slice(0, prevItems.length - 1)
+                  .concat({
+                    title: "shortcut.more",
+                    items: [reduceItem.title],
+                  });
+
+                return newBaseItems;
+              });
+            } else {
+              const reduceItem = baseItems[baseItems.length - 2];
+              setMoreItems((prevItems) => [...prevItems, reduceItem]);
+              setBaseItems((prevItems) => {
+                const newBaseItems = prevItems
+                  .slice(0, prevItems.length - 2)
+                  .concat(prevItems[prevItems.length - 1]);
+
+                newBaseItems[newBaseItems.length - 1].items = [
+                  ...moreItems.map((item) => item.title),
+                  reduceItem.title,
+                ];
+
+                return newBaseItems;
+              });
+            }
+          }
+        } else {
+          if (offsetRight >= 100) {
+            if (moreItems.length > 1) {
+              const expandItem = moreItems[moreItems.length - 1];
+              setMoreItems((prevItems) => {
+                const newMoreItems = prevItems.slice(0, prevItems.length - 1);
+                return newMoreItems;
+              });
+              setBaseItems((prevItems) => {
+                const newBaseItems = prevItems
+                  .slice(0, prevItems.length - 1)
+                  .concat(expandItem, prevItems[prevItems.length - 1]);
+
+                newBaseItems[newBaseItems.length - 1].items = moreItems
+                  .slice(0, moreItems.length - 1)
+                  .map((item) => item.title);
+                return newBaseItems;
+              });
+            } else if (moreItems.length === 1) {
+              const expandItem = moreItems[0];
+              setMoreItems([]);
+              setBaseItems((prevItems) => {
+                const newBaseItems = prevItems
+                  .slice(0, prevItems.length - 1)
+                  .concat(expandItem);
+                return newBaseItems;
+              });
+            }
+          }
+        }
+      }
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+    return () => window.removeEventListener("resize", handleWindowResize);
+  }, [moreItems, baseItems, currentWidth]);
 
   return (
     <Navbar expand="lg" id={styles.navbar}>
@@ -47,7 +122,10 @@ const Header = () => {
           </svg>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="offcanvasNavbar" />
-        <Nav className={`${styles.navItems} me-auto d-none d-lg-flex h-100`}>
+        <Nav
+          className={`${styles.navItems} me-auto d-none d-lg-flex h-100`}
+          ref={navbarRef}
+        >
           <div className="d-flex justify-content-center align-items-center">
             <Nav.Link className={styles.logo}>
               <svg
@@ -81,7 +159,7 @@ const Header = () => {
             </Nav.Link>
           </div>
           <div className={styles.desktop__content}>
-            {contentItems.map((elem, index) => {
+            {baseItems.map((elem, index) => {
               if (elem.items) {
                 return (
                   <ButtonDropDown
@@ -92,47 +170,35 @@ const Header = () => {
                 );
               } else {
                 if (elem.title === "shortcut.map")
-                  return <ButtonNav title="map" svg="linkOut" key={index} />;
+                  return (
+                    <ButtonNav
+                      title="map"
+                      svg="linkOut"
+                      key={index}
+                      underline={true}
+                    />
+                  );
                 else
                   return (
-                    <ButtonNav title={elem.title} key={index} url={elem.url} />
+                    <ButtonNav
+                      title={elem.title}
+                      key={index}
+                      url={elem.url}
+                      underline={true}
+                    />
                   );
               }
             })}
           </div>
         </Nav>
-        <Nav className="d-none d-lg-flex">
+        <Nav className="d-flex align-items-center flex-row">
           <ButtonNav svg="globeIcon" />
-          <ButtonNav title="shortcut.signIn" isActive={true} />
-          <ButtonNav title="shortcut.playNow"></ButtonNav>
+          <div className="d-none d-lg-flex">
+            <ButtonNav title="shortcut.signIn" isActive={true} />
+            <ButtonNav title="shortcut.playNow" />
+          </div>
+          <ButtonNav svg="menubar" />
         </Nav>
-        <Navbar.Offcanvas
-          id="offcanvasNavbar"
-          aria-labelledby="offcanvasNavbarLabel"
-          placement="end"
-        >
-          <Offcanvas.Header closeButton>
-            <Offcanvas.Title id="offcanvasNavbarLabel">
-              Offcanvas
-            </Offcanvas.Title>
-          </Offcanvas.Header>
-          <Offcanvas.Body>
-            <Nav className="justify-content-end flex-grow-1 pe-3">
-              <Nav.Link href="#action1">Home</Nav.Link>
-              <Nav.Link href="#action2">Link</Nav.Link>
-              <NavDropdown title="Dropdown" id="offcanvasNavbarDropdown">
-                <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action4">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action5">
-                  Something else here
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-          </Offcanvas.Body>
-        </Navbar.Offcanvas>
       </Container>
     </Navbar>
   );

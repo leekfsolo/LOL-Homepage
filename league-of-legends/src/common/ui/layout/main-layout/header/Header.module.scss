@@ -23,7 +23,7 @@
     #desktop_title {
       color: $white;
       font-weight: 700;
-      font-size: 17px;
+      font-size: 18px;
       outline: none;
       text-transform: capitalize;
 
@@ -42,5 +42,11 @@
       align-items: center;
       margin-left: 10px;
     }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  #navbar {
+    padding: 0;
   }
 }

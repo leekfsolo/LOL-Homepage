@@ -15,7 +15,7 @@ const SectionHeader = () => {
         />
       </div>
       <div className={styles.sectionHeader__context}>
-        <span>
+        <span className="d-none d-md-inline">
           <img
             src="https://res.cloudinary.com/dcsi3yllr/image/upload/v1649844686/Decoration/orjpvgdkhizqssmg3wa5.png"
             alt=""
@@ -25,7 +25,7 @@ const SectionHeader = () => {
         <span className={styles.sectionHeader__title}>
           {t("header.champions")}
         </span>
-        <span>
+        <span className="d-none d-md-inline">
           <img
             src="https://res.cloudinary.com/dcsi3yllr/image/upload/v1649844694/Decoration/lqb2rwvsnmiywur2sk7s.png"
             alt=""

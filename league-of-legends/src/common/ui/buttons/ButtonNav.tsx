@@ -2,15 +2,16 @@ import React, { FC, ReactNode, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import styles from "./Button.module.scss";
-import ButtonGlobe from "./ButtonGlobe";
+import ButtonSvg from "./ButtonSvg";
 
 interface Props {
   url?: string;
   title?: string;
-  children?: ReactNode;
+  svg?: string;
   isActive?: boolean;
   hasBorder?: boolean;
-  svg?: string;
+  underline?: boolean;
+  children?: ReactNode;
 }
 
 const ButtonNav: FC<Props> = (props: Props) => {
@@ -21,13 +22,15 @@ const ButtonNav: FC<Props> = (props: Props) => {
     svg = "",
     isActive = false,
     hasBorder = false,
+    underline = false,
   } = props;
 
   const [isSvgHover, setIsSvgHover] = useState<boolean>(false);
   const [isItemHover, setIsItemHover] = useState<boolean>(false);
 
   const toggleSvgHover = () => setIsSvgHover(!isSvgHover);
-  const toggleItemHover = () => setIsItemHover(!isItemHover);
+  const showItem = () => setIsItemHover(true);
+  const hideItem = () => setIsItemHover(false);
 
   const className = `${styles["link-item"]}${
     isActive ? ` ${styles.active}` : ""
@@ -64,20 +67,18 @@ const ButtonNav: FC<Props> = (props: Props) => {
         </svg>
       </div>
     );
-  }
-
-  if (svg === "globeIcon") {
-    return <ButtonGlobe />;
+  } else if (svg !== "") {
+    renderElement = <ButtonSvg svg={svg} />;
   }
 
   return (
     <div
       className={styles.wrapper}
-      onMouseEnter={toggleItemHover}
-      onMouseLeave={toggleItemHover}
+      onMouseEnter={showItem}
+      onMouseLeave={hideItem}
     >
       {renderElement}
-      {isItemHover && !isActive && title !== "shortcut.playNow" && (
+      {underline && isItemHover && (
         <div className={styles["link-item-underline"]}></div>
       )}
     </div>
