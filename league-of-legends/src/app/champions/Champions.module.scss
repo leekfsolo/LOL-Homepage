@@ -5,6 +5,7 @@
   min-height: 75vh;
   width: 100%;
   font-family: Beaufort for LOL, Arial, sans-serif;
+  padding: 0 0 250px 0;
 
   .wrapper {
     background-color: $black-tertiary;
@@ -237,12 +238,11 @@
     position: relative;
     z-index: 1000;
     margin: 0 auto;
-    padding: 0;
 
     .champion__item {
       width: 240px;
       transform: scale(0.94);
-      transition: transform 0.5s ease;
+      transition: transform 0.4s ease;
       position: relative;
       margin-bottom: 15px;
       overflow: hidden;
