@@ -23,5 +23,13 @@
   "filter.sortTypeRegion": "Region",
   "header.champions": "Champions",
   "champion.explore": "Explore",
-  "region.subHeader.championsFound": "Champions Found"
+  "region.subHeader.championsFound": "Champions Found",
+  "footer.link.about": "about league of legends",
+  "footer.link.help": "help us improve",
+  "footer.link.server": "server status",
+  "footer.link.support": "support",
+  "footer.link.esport": "esport pro site",
+  "footer.legal.link.privacy": "privacy notice",
+  "footer.legal.link.service": "terms of service",
+  "footer.legal.link.cookie": "cookie preferences"
 }

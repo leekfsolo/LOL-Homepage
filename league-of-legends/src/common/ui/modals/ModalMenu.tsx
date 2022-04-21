@@ -44,7 +44,7 @@ const ModalMenu: FC<Props> = (props: Props) => {
         })}
       </div>
       <div className={styles.menu__auth}>
-        <ButtonNav title="sign in" isActive />
+        <ButtonNav title="shortcut.signIn" isActive />
         <ButtonNav title="shortcut.playNow" />
       </div>
     </div>

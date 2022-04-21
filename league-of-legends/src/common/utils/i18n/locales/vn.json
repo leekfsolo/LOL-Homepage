@@ -23,5 +23,13 @@
   "filter.sortTypeRegion": "khu vực",
   "header.champions": "Tướng",
   "champion.explore": "Khám Phá",
-  "region.subHeader.championsFound": "Tướng tìm thấy"
+  "region.subHeader.championsFound": "Tướng tìm thấy",
+  "footer.link.about": "liên minh huyền thoại",
+  "footer.link.help": "ý kiến đóng góp",
+  "footer.link.server": "tình trạng máy chủ",
+  "footer.link.support": "hỗ trợ",
+  "footer.link.esport": "trang chủ thể thao điện tử chuyên nghiệp",
+  "footer.legal.link.privacy": "thông báo về quyền riêng tư",
+  "footer.legal.link.service": "điều khoản dịch vụ",
+  "footer.legal.link.cookie": "tùy chọn cookies"
 }

@@ -48,5 +48,17 @@
 @media screen and (max-width: 1024px) {
   #navbar {
     padding: 0;
+
+    .navbar__brand {
+      svg:first-child {
+        width: 95px;
+        margin-right: 10px;
+      }
+
+      svg:last-child {
+        width: 14px;
+        height: 7px;
+      }
+    }
   }
 }

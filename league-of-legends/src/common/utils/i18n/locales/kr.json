@@ -23,5 +23,13 @@
   "filter.sortTypeRegion": "지역별",
   "header.champions": "챔피언",
   "champion.explore": "살펴보기",
-  "region.subHeader.championsFound": "명의 챔피언을 찾았습니다"
+  "region.subHeader.championsFound": "명의 챔피언을 찾았습니다",
+  "footer.link.about": "리그 오브 레전드",
+  "footer.link.help": "개선할 수 있도록 도와주세요",
+  "footer.link.server": "서비스 상태",
+  "footer.link.support": "고객지원",
+  "footer.link.esport": "게임시간 선택제",
+  "footer.legal.link.privacy": "개인정보 처리방침",
+  "footer.legal.link.service": "서비스 약관",
+  "footer.legal.link.cookie": "쿠키 설정"
 }

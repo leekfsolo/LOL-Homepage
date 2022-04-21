@@ -1,21 +1,35 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import ButtonNav from "../../../buttons/ButtonNav";
 
 import styles from "./Footer.module.scss";
 
 const Footer = () => {
+  const { t } = useTranslation();
   const [isLogoHover, setIsLogoHover] = useState<boolean>(false);
 
   const toggleLogo = () => setIsLogoHover(!isLogoHover);
 
+  const footer_link_items = [
+    "footer.link.about",
+    "footer.link.help",
+    "footer.link.server",
+    "footer.link.support",
+    "footer.link.esport",
+  ];
+
+  const footer_legal_link_items = [
+    "footer.legal.link.privacy",
+    "footer.legal.link.service",
+    "footer.legal.link.cookie",
+  ];
+
   return (
     <footer className={styles.footer}>
       <div className={styles.footer__link}>
-        <ButtonNav title="about league of legends" />
-        <ButtonNav title="help us improve" />
-        <ButtonNav title="server status" />
-        <ButtonNav title="support" />
-        <ButtonNav title="esport pro site" />
+        {footer_link_items.map((item, index) => (
+          <ButtonNav key={index} title={t(item)} />
+        ))}
       </div>
       <div className={styles.footer__logo}>
         <svg
@@ -37,9 +51,9 @@ const Footer = () => {
         </p>
       </div>
       <div className={styles.footer__legal_link}>
-        <ButtonNav title="privacy notice" />
-        <ButtonNav title="terms of service" />
-        <ButtonNav title="cookie preferences" />
+        {footer_legal_link_items.map((item, index) => (
+          <ButtonNav key={index} title={t(item)} />
+        ))}
       </div>
       <div className={styles.footer__rating}>
         <div className={styles.rating__img}>
