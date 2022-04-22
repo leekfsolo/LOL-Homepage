@@ -22,7 +22,7 @@
   }
 
   .footer__copyright {
-    width: 40%;
+    width: 650px;
     text-align: center;
     color: $grey-default;
     font-size: 12px;
@@ -61,6 +61,29 @@
           font-size: 13px;
           font-weight: 500;
         }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .footer {
+    position: relative;
+
+    .footer__link {
+      flex-direction: column;
+
+      a {
+        font-size: 13px !important;
+      }
+    }
+
+    .footer__legal_link {
+      flex-direction: column;
+      margin-bottom: 20px !important;
+
+      a {
+        font-size: 13px !important;
       }
     }
   }

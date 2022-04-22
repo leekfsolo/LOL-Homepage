@@ -422,12 +422,16 @@
 @media screen and (max-width: 768px) {
   .champions {
     position: relative;
-    transform: translateY(-90px);
+    padding-bottom: 50px !important;
   }
 
-  .sectionHeader__title {
-    font-size: 28px;
-    letter-spacing: 5px;
+  .sectionHeader {
+    margin-top: 80px !important;
+
+    .sectionHeader__title {
+      font-size: 28px;
+      letter-spacing: 5px;
+    }
   }
 
   .champion__list {
@@ -456,6 +460,21 @@
           .champion__body,
           .champion__info {
             border: 0 !important;
+          }
+
+          .champion__image {
+            position: relative;
+
+            &::before {
+              content: "";
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              width: 100%;
+              height: 100%;
+              background-color: rgba(0, 0, 0, 0.3);
+            }
           }
         }
 
