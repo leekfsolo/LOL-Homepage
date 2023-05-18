@@ -1,0 +1,17 @@
+.caroussel {
+  .caroussel__item {
+    width: 1100px;
+    height: 450px;
+    max-width: 900px;
+
+    &.active {
+      z-index: 10;
+    }
+
+    &.prev,
+    &.next {
+      z-index: 5;
+      transition: transform-origin 0s 0s, transform 1s 0s, z-index 0.5s 0.5s;
+    }
+  }
+}

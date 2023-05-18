@@ -15,3 +15,10 @@ export interface RegionData {
   name: string;
   total: number;
 }
+
+export interface CarousselItem {
+  url: string;
+  isActive?: boolean;
+  prev?: boolean;
+  next?: boolean;
+}

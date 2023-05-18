@@ -12,12 +12,11 @@ cloudinary.config({
 	secure: true
 });
 
-const cloudinaryUrl = `https://${API_KEY}:${API_SECRET}@api.cloudinary.com/v1_1/${CLOUD_NAME}/resources/image?max_results=160`;
 const databaseUrl = "http://127.0.0.1:8000/champions/";
 
-module.exports.getImagesFromDB = async () => {
+module.exports.getImagesFromDB = async (folder) => {
 	const response = await cloudinary.v2.search.expression(
-		'folder:Champions'
+		`folder:${folder}`
 	).max_results(160).execute();
 	const data = response.resources.sort((object1, object2) => {
 		const object1_id = object1.public_id.match(/\b\w+/gm)[1];
